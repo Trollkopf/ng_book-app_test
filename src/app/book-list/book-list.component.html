@@ -1,0 +1,25 @@
+<div class="table-responsive">
+  <table class="table table-info align-middle">
+    <thead>
+      <tr>
+        <th colspan="3">Libros</th>
+      </tr>
+    </thead>
+    <tbody *ngFor="let book of books">
+      <tr class="book-item">
+        <td class="w-50">{{ book.volumeInfo.title }}</td>
+        <td class="w-25">{{ book.volumeInfo.authors }}</td>
+        <td class="w-25">
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="add.emit(book.id)"
+            data-test="add-button"
+          >
+            Añadir
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
