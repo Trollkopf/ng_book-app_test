@@ -8,21 +8,14 @@ import { BookListComponent } from './book-list/book-list.component';
 import { BookCollectionComponent } from './book-collection/book-collection.component';
 import { booksReducer } from './books/store/books.reducer';
 import { collectionReducer } from './books/store/collection.reducer';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 
-@NgModule({
-  declarations: [
-    AppComponent,
-    BookListComponent,
-    BookCollectionComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    StoreModule.forRoot({books: booksReducer, collection: collectionReducer}),
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
-})
+@NgModule({ declarations: [
+        AppComponent,
+        BookListComponent,
+        BookCollectionComponent
+    ],
+    bootstrap: [AppComponent], imports: [BrowserModule,
+        AppRoutingModule,
+        StoreModule.forRoot({ books: booksReducer, collection: collectionReducer })], providers: [provideHttpClient(withInterceptorsFromDi())] })
 export class AppModule { }
